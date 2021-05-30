@@ -316,44 +316,40 @@ var obj = new car('Tesla','Model B',35000);
   </form>
   ```
 
-  
 
-  
 
-  
+### **Regular Expressions:**
 
-  ### **Regular Expressions:**
+**These are the expressions/patterns that are present in the usernames that are used to identify whether the username is valid or not.**
 
-  **These are the expressions/patterns that are present in the usernames that are used to identify whether the username is valid or not.**
+```html
+//In this we check whether the entered username is having specific patterns like our rollno startswith B18xxxxEC etc...
 
-  ```html
-  //In this we check whether the entered username is having specific patterns like our rollno startswith B18xxxxEC etc...
-  
-  //Here the postion of the regular expression is not concerned ut the content in the regualr expression is of the concern.
-  
-  <script>
-  	function validate(){
-          var user = document.getElementById("username").value;
-          var regx = /B18/; //regular expression used for checking
-          if (regx.test(user)) {
-              alert("Valid Username");
-              return true;
-          } else {
-              alert("Invalid Username");
-              document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
-              return false;
-          }
-      }
-  </script>
-  
-  <form onsubmit="return validate()" action="page.html">
-      <input id="username" type="text" placeholder="username">
-      <label id="lbluser" style="color:red; visibility: hidden;">Invalid</label><br>
-      <button type="submit" onclick="check()"> Submit </button>
-  </form>
-  ```
+//Here the postion of the regular expression is not concerned ut the content in the regualr expression is of the concern.
 
-  
+<script>
+	function validate(){
+        var user = document.getElementById("username").value;
+        var regx = /B18/; //regular expression used for checking
+        if (regx.test(user)) {
+            alert("Valid Username");
+            return true;
+        } else {
+            alert("Invalid Username");
+            document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
+            return false;
+        }
+    }
+</script>
+
+<form onsubmit="return validate()" action="page.html">
+    <input id="username" type="text" placeholder="username">
+    <label id="lbluser" style="color:red; visibility: hidden;">Invalid</label><br>
+    <button type="submit" onclick="check()"> Submit </button>
+</form>
+```
+
+
 
 - Specially here we have inbuilt functions to check the regular expressions like test() in the above example and for making the regular expression case insensitive i.e, not checking the case of the testing text we can use the syntax like: **/B18/i**. The 'i' here indicates the regular expression is case insensitive.
 
@@ -386,4 +382,13 @@ var obj = new car('Tesla','Model B',35000);
 
 - Here, in regx = /B1[89]/; we are saying that the regular expression can also contain the B19 or B18 by indicating them in the square brackets giving a character set. We can also mention the range in the regular expression by something like: [a-x] meaning: the letter can be anything from a to x.
 - If we want to exclude something in the regular expression we can indicate it by [ ^ *expression to exclude*] and here we can also indicate a range like [ ^ a-x] indicating we don't anything from a-x.
+- Now, if we want to repeatedly identify the same characterset then we can use {num} indicating we are identifying 'num' number of times whether the given character set is present or not.
+  - Eg: [0-9]{5} checks the given input has any 5 consequent numbers having the range from 0-9.
+
+- **Special Charecters:**
+  - \d is short form of [0-9].
+  - \w is short form of [a-z, A-Z, 0-9 & _].
+  - \s is short form of white space characters like tab and space.
+  - \t matches tab only.
+
 - 
