@@ -87,7 +87,7 @@ Document Object Model consists of nodes like:
 - JavaScript is evaluated from left to right while doing arithmetic operations having same operators.
 - When having different operators we use BODMAS rule to evaluate.
 - **Important point here is result = 6+9+"hello"+9+1; will be result = "15hello91"**
-  - What happening here is as the associativity is from left to right JavaScript evaluates the integers and later on there is a string so it treates the later on variables as string and does concatenation.
+  - What happening here is as the associativity is from left to right JavaScript evaluates the integers and later on there is a string so it treats the later on variables as string and does concatenation.
 
 ### Scopes:
 
@@ -134,7 +134,7 @@ var car{
 
 
 
-- We can also create objects of datatypes like integer, string, boolean by defining with the new keyword.
+- We can also create objects of data types like integer, string, boolean by defining with the new keyword.
 
 - ```javascript
   var str1 = new String();
@@ -199,9 +199,191 @@ Now create an object.
 var obj = new car('Tesla','Model B',35000);
 ```
 
-Now, we can access the variabes like car_model etc.. using the dot(' . ') operator like ``` var price = obj.price; ```
+**Now, we can access the variables like car_model etc.. using the dot(' . ') operator like ``` var price = obj.price; ```**
 
 
 
 ## DOM Manipulations
 
+### Events using methods 
+
+- ```javascript
+  onclick = "func()" //is the attribute we need to give for this type of button events.
+  ```
+
+- ```javascript
+  document.getElementById(/*id here*/); //returns the element node having the id passed
+  ```
+
+- ```javascript
+  var str = document.getElementById("someheading"); 
+  // Now, we can access the text node of this element using
+  str.innerHTML; //gives the text node of the element node and we can also alter it using this.
+  ```
+
+- ```javascript
+  /* Now, this */ document.getElementById();// returns only one object so if we want to change multiple objects then we use
+  
+  document.getElementsByTagName(); // and this returns a list of js objects having the same tagname passed.
+  ```
+
+- ```javascript
+  /* Similarly as above we can also get the elements using classes by */ document.getElementsByClassName(); // and this returns a list of js objects having the same class passed.
+  ```
+
+- ```javascript
+  /* Similarly as above we can also get the elements using classes by */ document.getElementsByName(); // and this returns a list of js objects having the same class passed.
+  ```
+
+  
+
+**We can access the attributes and change them using the dot operator.**
+
+
+
+### MOUSE Events:
+
+- ```javascript
+  onmouseover = "func()", onmouseout = "other_func()" 
+  //are the attributes we need to give for this type of mouse events namely mouse hover function and mouse non hover functions.
+  ```
+
+  
+
+### Form Validations:
+
+- ```html
+  <form>
+     <!-- This tag is specifically used to submit/POST user inputs and we can't submit/POST without using it. This doesn't change the way the website looks but used for POST requests. --> 
+  </form>
+  
+   <!-- Button needs to be a type of submit specifically -->
+  ```
+
+- ```html
+  <script>
+  	function validate(){
+          var user = document.getElementById("username");
+          var pass = document.getElementById("password");
+          if (user.value.trim() == "" || pass.value.trim() = "") {
+              alert("No Blank Values allowed");
+              return false;
+          } else {
+              return true;
+          }
+      }
+  </script>
+  
+  <form onsubmit="return validate()" action="page.html">
+      <input id="username" type="text" placeholder="username"><br>
+      <input id="password" type="password" placeholder="password"><br>
+      <button type="submit" onclick="check()"> Submit </button>
+  </form>
+  ```
+
+- The above HTML code takes input namely username and password and checks if it's not null and if  so, it redirects to "page.html". **Important thing here is the attribute of form tag onsubmit having return statement in the attribute value indicating the dynamic nature i.e, the attribute activates when the onsubmit attribute is true and it will become true iff and only iff the validate() function returns true. and if we remove the return statement in the onsubmit attribute value then it redirects independent of the boolean value returned by the validate() function.
+
+- ```html
+  // This form validates the username and password and indicate invalid entry iff any
+  <script>
+  	function validate(){
+          var user = document.getElementById("username");
+          var pass = document.getElementById("password");
+          
+          if (user.value.trim() == "") {
+              alert("Blank Username");
+              user.style.border = "solid 3px red"; // makes the border red indicating invalid entry
+              document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
+              return false;
+          } else if (pass.value.trim() = "") {
+              alert("Blank Password");
+              pass.style.border = "solid 3px red"; // makes the border red indicating invalid entry
+              return false;
+          } else if(pass.value.length < 5) {
+              alert("Password minimum length is 5");
+              return false;
+          } else {
+              return true;
+          }
+      }
+  </script>
+  
+  <form onsubmit="return validate()" action="page.html">
+      <input id="username" type="text" placeholder="username"><br>
+      <label id="lbluser" style="color:red; visibility: hidden;">Invalid</label>
+      <input id="password" type="password" placeholder="password"><br>
+      <button type="submit" onclick="check()"> Submit </button>
+  </form>
+  ```
+
+  
+
+  
+
+  
+
+  ### **Regular Expressions:**
+
+  **These are the expressions/patterns that are present in the usernames that are used to identify whether the username is valid or not.**
+
+  ```html
+  //In this we check whether the entered username is having specific patterns like our rollno startswith B18xxxxEC etc...
+  
+  //Here the postion of the regular expression is not concerned ut the content in the regualr expression is of the concern.
+  
+  <script>
+  	function validate(){
+          var user = document.getElementById("username").value;
+          var regx = /B18/; //regular expression used for checking
+          if (regx.test(user)) {
+              alert("Valid Username");
+              return true;
+          } else {
+              alert("Invalid Username");
+              document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
+              return false;
+          }
+      }
+  </script>
+  
+  <form onsubmit="return validate()" action="page.html">
+      <input id="username" type="text" placeholder="username">
+      <label id="lbluser" style="color:red; visibility: hidden;">Invalid</label><br>
+      <button type="submit" onclick="check()"> Submit </button>
+  </form>
+  ```
+
+  
+
+- Specially here we have inbuilt functions to check the regular expressions like test() in the above example and for making the regular expression case insensitive i.e, not checking the case of the testing text we can use the syntax like: **/B18/i**. The 'i' here indicates the regular expression is case insensitive.
+
+- Now, here we check the regular expression for more general cases like B18, B19 etc..
+
+  ```html
+  //In this we check whether the entered username is having specific patterns like our rollno startswith B18xxxxEC and also B19xxxxEC also.
+  
+  <script>
+  	function validate(){
+          var user = document.getElementById("username").value;
+          var regx = /B1[89]/; //regular expression used for checking
+          if (regx.test(user)) {
+              alert("Valid Username");
+              return true;
+          } else {
+              alert("Invalid Username");
+              document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
+              return false;
+          }
+      }
+  </script>
+  
+  <form onsubmit="return validate()" action="page.html">
+      <input id="username" type="text" placeholder="username">
+      <label id="lbluser" style="color:red; visibility: hidden;">Invalid</label><br>
+      <button type="button" onclick="check()"> Submit </button>
+  </form>
+  ```
+
+- Here, in regx = /B1[89]/; we are saying that the regular expression can also contain the B19 or B18 by indicating them in the square brackets giving a character set. We can also mention the range in the regular expression by something like: [a-x] meaning: the letter can be anything from a to x.
+- If we want to exclude something in the regular expression we can indicate it by [ ^ *expression to exclude*] and here we can also indicate a range like [ ^ a-x] indicating we don't anything from a-x.
+- 
