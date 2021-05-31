@@ -361,7 +361,7 @@ var obj = new car('Tesla','Model B',35000);
   <script>
   	function validate(){
           var user = document.getElementById("username").value;
-          var regx = /B1[89]/; //regular expression used for checking
+          var regx = /B1[89][0-9]{4}EC/; //regular expression used for checking
           if (regx.test(user)) {
               alert("Valid Username");
               return true;
@@ -391,4 +391,184 @@ var obj = new car('Tesla','Model B',35000);
   - \s is short form of white space characters like tab and space.
   - \t matches tab only.
 
+- **Mobile Number Validation:**
+
+  ```html
+  //In this we check whether the entered username is having specific patterns like our rollno startswith B18xxxxEC and also B19xxxxEC also.
+  
+  <script>
+  	function validate(){
+          var user = document.getElementById("number").value;
+          var regx = /^[7-9]\d{9}$/; //mobile number check
+          if (regx.test(user)) {
+              alert("Valid number");
+              return true;
+          } else {
+              alert("Invalid number");
+              document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
+              return false;
+          }
+      }
+  </script>
+  
+  <form onsubmit="return validate()" action="page.html">
+      <input id="number" type="text" placeholder="Phone Number">
+      <label id="lbluser" style="color:red; visibility: hidden;">Invalid</label><br>
+      <button type="button" onclick="check()"> Submit </button>
+  </form>
+  ```
+
+- Here, when we enter a valid number and some other trash also the output will be valid if not done as above because we just check whether the character set is present in the input text or not hence it's valid.
+- In the above case for checking the mobile number we added two new symbols namely '^,$' these indicates that the text given as input must have the specified chracterset as the starting and ending respectively.
+
+- '^' means that the given text can't start with some thing other than the character set specified and the '$' means that the given text can't end with some thing other than the character set specified. Thus, restricting the length of the input.
+
+**Some important symbols used in this:**
+
+- '.' dot operator indicating anything that can be present.
+- '()' indicating groups, this can be used when there are multiple divisions in the input like in the case of email which consists name and @ symbol and the extension like gmail and other extension like '.com' etc.......
+- '+' indicating we need to evaluate the character set more than once (this can be used when we don't know the length of the input text ).
+- '?' makes some group optional i.e, the test() function returns true if the input text doesn't satisfy the optional condtions
+
+**Similarly we can check an email with the character set:** 
+
+``` javascript
+regx = /^ ([a-z A-Z 0-9 \.-]+)@([a-z A-Z 0-9 -]+).([a-z]{2,8}) (.[a-z]{2,8})? $/;
+```
+
+Groups :
+
+![](/home/akshith/Pictures/Screenshot from 2021-05-31 00-19-57.png)
+
+
+
+### Timing Functions:
+
+- There are 4 functions available for setting and clearing the timer they are:
+- **setTimeout():** This starts a timer for certain specified time and runs a function after that timer completes it the given period of time. **This is used only when we want run a function once not repeatedly.** 
+  - Syntax: setTimeout(func,time_in_milliseconds)
+
+- Now if we want to stop this time mentioned above before completing the given period of time, then we need to use a function called clearTimeout(); by passing an ID.
+
+  - Here, we need to pass an ID for the clearTimeout() function and this ID is obtained when the timer is started by the setTimeout() function.
+
+  - ```javascript
+    //Example:
+    window.setTimeout(func,5000); //starting a timer which counts for 5secs and then starts the function 'func()'
+    
+    //for getting the ID of the setTimeout() function we just treat it as some function returning the ID and store in a variable i.e,
+        
+    ID = window.setTimeout(func,5000); //returns te ID of the timer
+    
+    //now, lets stop it.
+    window.clearTimeout(ID);
+    ```
+
+  - In the above window is another object like "**document**" using which we can access some functions like this.
+
+- Now, if we want to run a function continuously after each constant period of time then we use another function called setInterval() with same syntax as setTimeout(). Difference is that the time passed here is the time used to frequently run the passed function after the passed period of time.
+- Similarly we clear/stop the timer using the same ID method as above.
+
+
+
+### Animations:
+
+- Here we use setInterval() and start the function which reduces the opacity value of the image by 0.1 each time function is called thus we achieve animations.
+
+- ```javascript
+  var opacity = 0;
+  var ID = 0;
+  function hide(){
+      var img = document.getElementById("img_id");
+      //get the opacity value
+      opacity = Number(window.getComputedStyle(img).getPropertyValue("opacity")); 
+      if(opacity > 0){
+          opacity -= 0.1;
+          img.style.opacity = opacity; //modify the opacity
+      }
+      if(opacity == 0)
+          clearInterval(ID);
+      
+  }
+  function fadeout(){
+      ID = window.setInterval(hide,20);
+  }
+  
+  function hide(){
+      var img = document.getElementById("img_id");
+      //get the opacity value
+      opacity = Number(window.getComputedStyle(img).getPropertyValue("opacity")); 
+      if(opacity < 1){
+          opacity += 0.1;
+          img.style.opacity = opacity; //modify the opacity
+      }
+      if(opacity == 1)
+          clearInterval(ID);
+      
+  }
+  
+  function fadein(){
+      ID = window.setInterval(show,20); //20 is in milliseconds so for smoother animation it is small
+  }
+  ```
+
+- Similarly we can increase the height, width for making a ♥ (heart symbol) act as a animated symbol.
+
+- ```html
+  <html>
+  	<head>
+   		<title>Basic Animations Part 2 - scaling</title>
+  		<script type="text/javascript">
+  		
+  		var width=100;
+  		var difference=2;
+  		var interveralID =0;
+  		//document.getElementById("img1").style.width=width;
+  
+  		function increase(){
+  			clearInterval(interveralID);
+  			interveralID=setInterval(expand,10);
+  		}
+  		function decrease(){
+  			clearInterval(interveralID);
+  			interveralID=setInterval(shrink,10);
+  		}
+  		function expand(){
+  			if(width<200){
+  				width = width+difference;
+  				document.getElementById("img1").style.width=width;
+  				console.log(width);
+  			}else{
+  				clearInterval(interveralID);
+  			}
+  		}
+  		function shrink(){
+  			if(width>100){
+  				width = width-difference;
+  				document.getElementById("img1").style.width=width;
+  				console.log(width);
+  			}else{
+  				clearInterval(interveralID);
+  			}
+  		}
+  	
+  		</script>
+  	</head>
+  	
+      <body>
+          <br>
+  		<br>
+  <img onmouseover="increase()" onmouseout="decrease()" id="img1" src="imgs/heart.png" width="100"/>
+      </body>
+  
+  </html>
+  
+  ```
+
+  
+  
+
+## jQuery
+
 - 
+
