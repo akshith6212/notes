@@ -12,13 +12,13 @@ Document Object Model consists of nodes like:
 - Attribute Nodes: Attributes present in the tags are called attribute Nodes.
 - Text Nodes: The actual content between an opening tag and a closing tag is called text node.
 
-![DOM View](/home/akshith/Pictures/1.png)
+![DOM View](1.png)
 
 
 
 ### Data types in JavaScript:
 
-![](/home/akshith/Pictures/2.png)
+![](2.png)
 
 
 
@@ -438,7 +438,7 @@ regx = /^ ([a-z A-Z 0-9 \.-]+)@([a-z A-Z 0-9 -]+).([a-z]{2,8}) (.[a-z]{2,8})? $/
 
 Groups :
 
-![](/home/akshith/Pictures/3.png)
+![](3.png)
 
 
 
@@ -567,3 +567,4 @@ Groups :
 
   
 
+--------------------------------------------------------x END x----------------------------------------------------------------
