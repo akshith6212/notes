@@ -451,7 +451,7 @@ dynamic square(var num){
 
 
 
-**Array Function:**
+### Array Function:
 
 If the function is having only one statement then we can simplify the syntax of the function as:
 
@@ -476,7 +476,7 @@ dynamic square(var num) => (num * num);
 //in this case writing 'return' is not needed bcz it's the only line present so it must be return statement only.
 ```
 
-**Anonymous Functions: **
+### Anonymous Functions: 
 
 Similar to Anonymous Functions in javascript here also we can do this eg:
 
@@ -494,7 +494,7 @@ main(){
 
 
 
-**Name parameters:**
+### Name parameters:
 
 By default the order of parameters (called ```positional parameters```) we pass to a function should be same as the order of parameters in the definition of it. If we don't want such then we can use this type of syntax also:
 
@@ -512,7 +512,7 @@ dynamic sub({var num1, var num2}) => num1 - num2;
 
 
 
-**Hybrid of positional parameters and Name parameters:**
+### Hybrid of positional parameters and Name parameters:
 
 ```dart
 main(){
@@ -540,7 +540,7 @@ dynamic sum(var num1, {var num2=0}) => num1 + num2;
 
 
 
-**Misc:**
+### Misc:
 
 ```dart
 main(){
