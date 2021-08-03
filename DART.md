@@ -238,7 +238,7 @@ main(){
 
 
 
-> **nested if and switch statements are similar in other languages like c++/.**
+> **nested if and switch statements are similar in other languages like c++.**
 
 
 
@@ -419,19 +419,139 @@ main(){
 
 ## functions:
 
+Beauty of functions in dart is the ability of dart to change the datatype of a function dynamically.
+
+```dart
+void main(){
+    print(square(5));
+    print(square(5.5));
+     
+    //above is valid as the return type of square function is dynamic
+}
+
+
+dynamic square(var num){
+    return (num * num);
+}
+```
+
+> if return type of a function is void we can also avoid to mention it i.e,
+>
+> ```dart
+> main(){
+>     hello();
+> }
+> 
+> hello(){
+>     print("Hello World!");
+> }
+> ```
+>
+> **By observing above examples we can say that the location of the function doesn't matter.** 
 
 
 
+**Array Function:**
+
+If the function is having only one statement then we can simplify the syntax of the function as:
+
+```dart
+main(){
+    hello();
+}
+
+hello() => print("Hello World!");
+```
+
+And also this works even for functions with some return type other than void also
+
+```dart
+void main(){
+    print(square(5));
+}
+
+
+dynamic square(var num) => (num * num);
+
+//in this case writing 'return' is not needed bcz it's the only line present so it must be return statement only.
+```
+
+**Anonymous Functions: **
+
+Similar to Anonymous Functions in javascript here also we can do this eg:
+
+```dart
+main(){
+    var arr = [1,2,3,4,5];
+    
+    arr.forEach((i) =>{
+        print(i)
+    });
+}
+
+// no semicolon near print statement
+```
 
 
 
+**Name parameters:**
+
+By default the order of parameters (called ```positional parameters```) we pass to a function should be same as the order of parameters in the definition of it. If we don't want such then we can use this type of syntax also:
+
+```dart
+main(){
+    print(sub(num2: 1,num1: 4));
+}
+
+dynamic sub({var num1, var num2}) => num1 - num2;
+
+//this is also valid and it prints 3 (4-1 = 3) 
+```
+
+**Putting those flower brackets makes the parameters as name parameters and also makes them optional i.e, it's not required to pass all name parameters compulsorily.**
 
 
 
+**Hybrid of positional parameters and Name parameters:**
+
+```dart
+main(){
+    print(sum(1, num2:2));
+}
+
+dynamic sum(var num1, {var num2}) => num1 + num2;
+```
+
+```dart
+main(){
+    print(sum(10)); //valid
+}
+
+dynamic sum(var num1, {var num2}) => num1 + num2;
+
+//accessing num2 in the function is not valid as it's not passed so we can give it a default value as:
+
+//checks if num2 is null then returns only with num1
+dynamic sum(var num1, {var num2}) => num1 + (num2 ?? 0) ;
+
+//we can do the above defining default value with this syntax also:
+dynamic sum(var num1, {var num2=0}) => num1 + num2;
+```
 
 
 
+**Misc:**
 
+```dart
+main(){
+    print(sum(2,2));
+    print(sum(10));
+}
+
+dynamic sum(var num1, [var num2]) => num1 + (num2 ?? 0);
+```
+
+**we can also make positional parameters optional by enclosing them between square brackets**
 
 
 
