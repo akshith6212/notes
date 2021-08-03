@@ -37,7 +37,7 @@ Document Object Model consists of nodes like:
     - ```javascript
       var b = "hello";                 
       ```
-  - Both the examples are valid and+ we can see that we are not declaring the type variable it is. This explains that JavaScript is a loosely typed language.
+  - Both the examples are valid and+ we can see that we are not declaring what the type of variable it is. This explains that JavaScript is a loosely typed language.
   - Coming to dynamically typed language:
     - ```javascript
       Eg:  var a = 5;
@@ -54,9 +54,9 @@ Document Object Model consists of nodes like:
 
 
 
-**JavaScript treats the whole HTML as document so, in order to get anything from the HTML blocks or post anything to the HTML we need to *document.* statement to access the nodes.**
+**JavaScript treats the whole HTML as a single document so, in order to get anything from the HTML blocks or post anything to the HTML we need to access the nodes by *document.action()* statement.**
 
-**Eg: *document.write(" < h2 >Hello world</ h2> ");* inserts the HTML code into the actual HTML.**
+**Eg: ```document.write("<h2>Hello world</h2>");``` inserts the HTML code into the actual HTML.** (This actually removes the existing HTML and writes the specified code into it.)
 
 
 
@@ -74,7 +74,7 @@ Document Object Model consists of nodes like:
   switch (variable) {/* cases here */}
   ```
   
-  - Here the important one is that **variable passed to switch statement can be a integer, string, bool**
+  - Here the important one, **variable passed to switch statement can be a integer, string, boolean** unlike the other languages.
   
 - ```javascript
   function name(/* inputs here */){/* code here */}
@@ -92,13 +92,17 @@ Document Object Model consists of nodes like:
 ### Scopes:
 
 - As normal to other programming languages the scope is same here.
+
 - **Variables declared by simply assigning value to them are by default global and some browsers don't restrict this type.**
 
-
+  - ```javascript
+    a = 1; //is also valid and if declared like this it's considered global and may not supported by all browsers.
+    ```
 
 ### Arrays 
 
 - **Arrays here are dynamic in nature** like vectors in c++. so, we can also push new elements after creating an array.
+  
   - ``` javascript
     Eg:  var arr = [1,2,3];
     ```
@@ -107,7 +111,7 @@ Document Object Model consists of nodes like:
      arr.push(4);
      ```
   
-- Above is valid and the array *arr* will be [1,2,3,4].
+- Above is valid and the array *arr* after pushing will be [1,2,3,4].
 
 
 
@@ -118,39 +122,37 @@ Document Object Model consists of nodes like:
 Eg: Below is a example of an object
 
 ```javascript
-var car{
+var car = {
     
 	car_brand: "Tesla",
 	car_model: "Model 3",
 	price: 35000,
-	teslaAutoPilot: function(){
-		document.wrie("<h2> Tesla is a legend. </h2>");
+	teslaAutoPilot: function(){ // this is a function called teslaAutopilot()
+		document.write("<h2> Tesla is a legend. </h2>");
 	}
     
 }
 ```
 
-*From above car object we can access it's model name using car.car_model and price by car.price etc.....*
+*From above car object we can access it's model name using ```car.car_model``` and price by ```car.price``` etc.....*
 
 
 
 - We can also create objects of data types like integer, string, boolean by defining with the new keyword.
 
 - ```javascript
-  var str1 = new String();
-  ```
-
-- ```javascript
+  var str1 = new String(); //returns a string object
+  
   str1.length // gives the length of string
-  //Here, str1 is an object and if we create a variable like
+  //Here, str1 is an object and if we create a variable like below it's a normal string
   
   var str2 = "hello"; //Now, str2 is a string.
   ```
-
+  
 - We can also add other properties to the existing objects then we can also create it outside the object declaration like:
 
 - ```javascript
-  var car{
+  var car = {
       
   	car_brand: "Tesla",
   	car_model: "Model 3",
@@ -161,7 +163,7 @@ var car{
       
   }
   
-  car.fueltype = "Electric";
+  car.fueltype = "Electric"; //adding other properties to the object but outside it's declaration.
   
   //Now, car also has a property named fueltype => car.fueltype returns "Electric".
   ```
@@ -169,7 +171,7 @@ var car{
 - Similarly we can also delete the properties like:
 
 - ```javascript
-  delete car.price; 
+  delete car.price; //deletes specified properties of the object.
   ```
 
 
@@ -193,13 +195,13 @@ function car(car_brand, car_model, price){
 }
 ```
 
-Now create an object.
+Now using above, we can create an object like below:
 
 ```javascript
 var obj = new car('Tesla','Model B',35000);
 ```
 
-**Now, we can access the variables like car_model etc.. using the dot(' . ') operator like ``` var price = obj.price; ```**
+**Now, we can access the variables like car_model etc.. using the dot(' . ') operator like ``` var price = obj.price; ```** using the above declared object.
 
 
 
@@ -208,33 +210,33 @@ var obj = new car('Tesla','Model B',35000);
 ### Events using methods 
 
 - ```javascript
-  onclick = "func()" //is the attribute we need to give for this type of button events.
+  onclick = "func()" //this type of attributes triggers the func() function on clicking the button.
   ```
 
 - ```javascript
-  document.getElementById(/*id here*/); //returns the element node having the id passed
-  ```
-
-- ```javascript
-  var str = document.getElementById("someheading"); 
+  document.getElementById(/*id here*/); //returns the element node having the id passed.
+  
+  Eg: var str = document.getElementById("someheading"); 
   // Now, we can access the text node of this element using
   str.innerHTML; //gives the text node of the element node and we can also alter it using this.
   ```
-
+  
 - ```javascript
-  /* Now, this */ document.getElementById();// returns only one object so if we want to change multiple objects then we use
+  /* Now, this */ document.getElementById();// returns only one (only one unique id is present in the HTML) object so if we want to change multiple objects then we use
   
   document.getElementsByTagName(); // and this returns a list of js objects having the same tagname passed.
+  
+  Eg: var temp = document.getElementsByTagName("h1"); //returns h1 tag elements
   ```
-
+  
 - ```javascript
   /* Similarly as above we can also get the elements using classes by */ document.getElementsByClassName(); // and this returns a list of js objects having the same class passed.
   ```
 
 - ```javascript
-  /* Similarly as above we can also get the elements using classes by */ document.getElementsByName(); // and this returns a list of js objects having the same class passed.
+  /* Similarly as above we can also get the elements using names by */ 
+  document.getElementsByName(); // and this returns a list of js objects having the same name attribute passed.
   ```
-
   
 
 **We can access the attributes and change them using the dot operator.**
@@ -245,7 +247,7 @@ var obj = new car('Tesla','Model B',35000);
 
 - ```javascript
   onmouseover = "func()", onmouseout = "other_func()" 
-  //are the attributes we need to give for this type of mouse events namely mouse hover function and mouse non hover functions.
+  //these are the attributes we need to give so that whenever our cursor is on this particular tag (where we gave this attribute) then the function func() is triggered and when we move out thr cursor from the particular tag other_func() is triggered.
   ```
 
   
@@ -254,10 +256,10 @@ var obj = new car('Tesla','Model B',35000);
 
 - ```html
   <form>
-     <!-- This tag is specifically used to submit/POST user inputs and we can't submit/POST without using it. This doesn't change the way the website looks but used for POST requests. --> 
+     <!-- This tag is specifically used to submit user inputs and we can't submit without using this. This doesn't change the way the website looks but used for POST requests. --> 
   </form>
   
-   <!-- Button needs to be a type of submit specifically -->
+   <!-- Button which submits the inputs needs to be the type of "submit" specifically -->
   ```
 
 - ```html
@@ -281,10 +283,10 @@ var obj = new car('Tesla','Model B',35000);
   </form>
   ```
 
-- The above HTML code takes input namely username and password and checks if it's not null and if  so, it redirects to "page.html". **Important thing here is the attribute of form tag onsubmit having return statement in the attribute value indicating the dynamic nature i.e, the attribute activates when the onsubmit attribute is true and it will become true iff and only iff the validate() function returns true. and if we remove the return statement in the onsubmit attribute value then it redirects independent of the boolean value returned by the validate() function.
+- The above HTML code takes input namely username and password and checks if it's not null and if  so, it redirects to "page.html". **Important thing here is the attribute of form tag onsubmit having return statement in the attribute value indicating the dynamic nature i.e, the attribute activates when the onsubmit attribute is true and it will become true iff and only iff the validate() function returns true. and if we remove the return statement in the onsubmit attribute value then it redirects independent of the boolean value returned by the validate() function.**
 
 - ```html
-  // This form validates the username and password and indicate invalid entry iff any
+  // This form validates the username and password and indicate invalid entry if any
   <script>
   	function validate(){
           var user = document.getElementById("username");
@@ -293,7 +295,8 @@ var obj = new car('Tesla','Model B',35000);
           if (user.value.trim() == "") {
               alert("Blank Username");
               user.style.border = "solid 3px red"; // makes the border red indicating invalid entry
-              document.getElementById("lbluser").style.visibility = "visible"; //A red label indicating invalid entry
+              document.getElementById("lbluser").style.visibility = "visible"; 
+              //A red label indicating invalid entry
               return false;
           } else if (pass.value.trim() = "") {
               alert("Blank Password");
@@ -478,6 +481,7 @@ Groups :
 - ```javascript
   var opacity = 0;
   var ID = 0;
+  
   function hide(){
       var img = document.getElementById("img_id");
       //get the opacity value
@@ -490,6 +494,7 @@ Groups :
           clearInterval(ID);
       
   }
+  
   function fadeout(){
       ID = window.setInterval(hide,20);
   }
@@ -511,7 +516,7 @@ Groups :
       ID = window.setInterval(show,20); //20 is in milliseconds so for smoother animation it is small
   }
   ```
-
+  
 - Similarly we can increase the height, width for making a ♥ (heart symbol) act as a animated symbol.
 
 - ```html
