@@ -122,7 +122,7 @@ assert(numb1 == 34.2);
 
 > 1. **const** keyword: 
 >
->    We can also use ```const ``` keyword for constants.
+>    We can also use ```const ```  keyword for constants.
 >
 > 2. int n; 
 >
