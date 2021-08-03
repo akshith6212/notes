@@ -51,7 +51,7 @@ main(){
 
 
 
-#### Reading inputs:
+### Reading inputs:
 
 ```dart
 import "dart:core";
@@ -68,13 +68,13 @@ Here, for printing a variable in the print statement we have used ```$``` symbol
 
 
 
-#### Comments:
+### Comments:
 
 we can either use ```//``` or ```/* */``` for line comment and block comment respectively. ```///``` for documentation.
 
 
 
-#### Formatting strings:
+### Formatting strings:
 
 We can either use single quotes ```''``` or ```""``` for strings but when we are writing a word like ```it's``` then we need to write it as ```it\'s``` if we are using ```''``` to start and end a string.
 
@@ -141,6 +141,10 @@ assert(numb1 == 34.2);
 >   }
 >   ```
 
+
+
+----
+
 ## Operators:
 
 ```dart
@@ -173,7 +177,7 @@ for(int i=0;i<2;i++){
 
  
 
-**Null Aware Operator:**
+### Null Aware Operator:
 
 1. ```?.``` operator:
 
@@ -217,13 +221,13 @@ for(int i=0;i<2;i++){
 
    
 
-**Ternary Operator:**
+### Ternary Operator:
 
 Similar to ternary operator in other languages like  C++
 
 
 
-**is operator:**
+### is operator:
 
 we can check a variable datatype using ``is`` operator.
 
@@ -239,6 +243,10 @@ main(){
 
 
 > **nested if and switch statements are similar in other languages like c++.**
+
+
+
+---
 
 
 
@@ -293,6 +301,10 @@ do{
 ```
 
 >There are statements like ```break``` and ```continue``` as in c++ for managing the loop.
+
+
+
+----
 
 
 
@@ -417,7 +429,11 @@ main(){
 
 
 
-## functions:
+----
+
+
+
+## Functions:
 
 Beauty of functions in dart is the ability of dart to change the datatype of a function dynamically.
 
